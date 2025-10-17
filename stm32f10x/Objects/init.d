@@ -36,3 +36,4 @@
 .\objects\init.o: .\CONFIG\printf.h
 .\objects\init.o: .\HARDWARE\hcsr04.h
 .\objects\init.o: .\HARDWARE\engin.h
+.\objects\init.o: .\HAL\control.h

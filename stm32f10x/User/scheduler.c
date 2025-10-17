@@ -9,9 +9,10 @@
 #include "engin.h"
 
 loop_t loop = {0}; 
+
 u32 time[10],time_sum;
  
-extern int16_t MpuOffset[6];
+extern int16_t MpuOffset[7];
 
 void Loop_check()
 {
@@ -21,6 +22,7 @@ void Loop_check()
 	loop.cnt_10ms++;
 	loop.cnt_20ms++;
 	loop.cnt_50ms++;
+	loop.cnt_200ms++;
 	loop.cnt_1000ms++;
 
 	if( loop.check_flag >= 1)
@@ -69,6 +71,11 @@ void main_loop()
 			loop.cnt_50ms = 0;
 			Duty_50ms();					//周期50ms的任务
 		}
+		if(loop.cnt_200ms >= 100)           
+		{
+			loop.cnt_200ms = 0;
+			Duty_200ms();                   //周期200ms的任务
+		}
 		if( loop.cnt_1000ms >= 500)
 		{
 			loop.cnt_1000ms = 0;
@@ -82,8 +89,8 @@ void Duty_2ms()
 {
 	time[0] = GetSysTime_us();
 								//读取传感器信息
-								//电机控制
-	//printf("2ms\r\n");
+								
+	
 	time[0] = GetSysTime_us() - time[0];
 }
 //////////////////////////////////////////////////////////
@@ -92,15 +99,15 @@ void Duty_4ms()
 	time[1] = GetSysTime_us();
 								//解析服务器命令
 								//返回数据到服务器
-	                           
+	                         
 	time[1] = GetSysTime_us() - time[1];
 }
 //////////////////////////////////////////////////////////
 void Duty_6ms()
 {
 	time[2] = GetSysTime_us();
-
 	
+	  
 	time[2] = GetSysTime_us() - time[2];
 }
 /////////////////////////////////////////////////////////
@@ -115,28 +122,40 @@ void Duty_10ms()
 void Duty_20ms()
 {
 	time[4] = GetSysTime_us();
-	Analysis_wires();					//解析视觉识别,结果存在wires中
-									   //电机模式控制
-	servo_set_angle();                 //舵机角度控制
-	HCSR04_GetFlag();                  //检测有无障碍
+	
+	motor_mod();					//电机模式控制
+	servo_set_angle();              //舵机角度控制
+	
+	
 	time[4] = GetSysTime_us() - time[4];
+
 }
 //////////////////////////////////////////////////////////
 void Duty_50ms()
 {
 	time[5] = GetSysTime_us();
-	HCSR04_Measure(&hcsr04);             //超声波测距,结果存在hcsr04_distance中
+	
+	HCSR04_GetFlag();                  //检测有无障碍
 	
 	time[5] = GetSysTime_us() - time[5];
 }
+
 /////////////////////////////////////////////////////////////
-void Duty_1000ms()
+void Duty_200ms()
 {
 	time[6] = GetSysTime_us();
-	Analysis_hcsro4();                  //超声避障
-	
+	HCSR04_Measure(&hcsr04);             //超声波测距,结果存在hcsr04_distance中
 	
 	time[6] = GetSysTime_us() - time[6];
+}
+
+//////////////////////////end///////////////////////////////////////////
+void Duty_1000ms()
+{
+	time[7] = GetSysTime_us();
+	
+	
+	time[7] = GetSysTime_us() - time[7];
 }
 
 //////////////////////////end///////////////////////////////////////////

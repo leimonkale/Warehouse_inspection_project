@@ -33,4 +33,5 @@
 .\objects\hcsr04.o: HARDWARE\hcsr04.h
 .\objects\hcsr04.o: .\CONFIG\printf.h
 .\objects\hcsr04.o: E:\keil_5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\hcsr04.o: .\User\delay.h
 .\objects\hcsr04.o: E:\keil_5\ARM\ARMCC\Bin\..\include\stddef.h

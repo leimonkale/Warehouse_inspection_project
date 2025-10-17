@@ -3,6 +3,8 @@
 
 #include "stm32f10x.h"
 
+
+
 typedef struct
 {
 	u8 check_flag;
@@ -13,6 +15,7 @@ typedef struct
 	s16 cnt_10ms;
 	s16 cnt_20ms;
 	s16 cnt_50ms;
+	s16 cnt_200ms;
 	s16 cnt_1000ms;
 }loop_t;
 
@@ -24,5 +27,6 @@ void Duty_6ms(void);
 void Duty_10ms(void);
 void Duty_20ms(void);
 void Duty_50ms(void);
+void Duty_200ms(void);
 void Duty_1000ms(void);
 #endif

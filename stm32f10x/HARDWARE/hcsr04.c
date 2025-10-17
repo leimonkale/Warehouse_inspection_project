@@ -2,6 +2,7 @@
 #include "ALL_DEFINE.h"
 #include "hcsr04.h"
 #include "printf.h"
+#include "delay.h"
 
 #include "stm32f10x.h"
 #include <stddef.h>
@@ -81,44 +82,39 @@ void HCSR04_Init(HCSR04_HandleTypeDef* hcsr04) {
  * @param  hcsr04: 超声波模块结构体指针
  * @retval 0:成功 1:超时
  */
-uint8_t HCSR04_Measure(HCSR04_HandleTypeDef* hcsr04) {
-    uint32_t start_time, end_time, duration;
-	uint32_t i;
-    
+uint8_t HCSR04_Measure(HCSR04_HandleTypeDef* hcsr04)
+{
+    uint32_t start_wait, echo_start, echo_end;
+    uint32_t timeout = hcsr04->timeout_us;
+
     // 发送10us触发脉冲
     GPIO_SetBits(hcsr04->TRIG_GPIOx, hcsr04->TRIG_GPIO_Pin);
-    for (i = 0; i < 720; i++) __NOP();  // 约10us延时
+    delay_us(10);
     GPIO_ResetBits(hcsr04->TRIG_GPIOx, hcsr04->TRIG_GPIO_Pin);
-    
-    // 等待ECHO上升沿
-    start_time = 0;
-    while (GPIO_ReadInputDataBit(hcsr04->ECHO_GPIOx, hcsr04->ECHO_GPIO_Pin) == 0) {
-        if (start_time++ > hcsr04->timeout_us) {
-            hcsr04->distance = -1.0f;  // 超时标志
-            return 1;
-        }
-        while (hcsr04->TIMx->CNT < 1);  // 等待1us
-        hcsr04->TIMx->CNT = 0;
-    }
-    
-    // 记录上升沿时间
-    start_time = hcsr04->TIMx->CNT;
-    
-    // 等待ECHO下降沿
-    while (GPIO_ReadInputDataBit(hcsr04->ECHO_GPIOx, hcsr04->ECHO_GPIO_Pin) == 1) {
-        if (hcsr04->TIMx->CNT - start_time > hcsr04->timeout_us) {
-            hcsr04->distance = -1.0f;  // 超时标志
+
+    // 等待ECHO变高，带超时
+    start_wait = GetSysTime_us();
+    while(GPIO_ReadInputDataBit(hcsr04->ECHO_GPIOx, hcsr04->ECHO_GPIO_Pin) == 0) {
+        if(GetSysTime_us() - start_wait > timeout) {
+            hcsr04->distance = -1.0f;
             return 1;
         }
     }
-    
-    // 计算持续时间(us)
-    end_time = hcsr04->TIMx->CNT;
-    duration = end_time - start_time;
-    
-    // 计算距离(声速343.2m/s, 距离=时间*声速/2)
-    hcsr04->distance = (duration * 0.03432f) / 2.0f;
+    echo_start = GetSysTime_us();
+
+    // 等待ECHO变低，带超时
+    while(GPIO_ReadInputDataBit(hcsr04->ECHO_GPIOx, hcsr04->ECHO_GPIO_Pin) == 1) {
+        if(GetSysTime_us() - echo_start > timeout) {
+            hcsr04->distance = -1.0f;
+            return 2;
+        }
+    }
+    echo_end = GetSysTime_us();
+
+    // 计算距离（cm）
+    hcsr04->distance = (echo_end - echo_start) * 0.03432f / 2.0f;
     hcsr04_distance = hcsr04->distance;
+
     return 0;
 }
 
@@ -147,5 +143,19 @@ void HCSR04_GetFlag(void)   //超声标志位更新
 				hcsr04_flag	|= HCSR04_LE;
 				break;
 		}
+	}else{
+		switch(engin_flag)
+		{
+			case ENGIN_IS:
+				hcsr04_flag	&= ~HCSR04_IS;
+				break;
+			case ENGIN_RI:
+				hcsr04_flag	&= ~HCSR04_RI;
+				break;
+			case ENGIN_LE:
+				hcsr04_flag	&= ~HCSR04_LE;
+				break;
+		}
+	
 	}
 }

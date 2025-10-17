@@ -64,40 +64,36 @@ void tim1_init(void){
 }
 
 // 舵机角度控制函数
-void servo_set_angle(void){
-	
-	static int flag = 1;
-	if(flag)
-	{
-		if(angle < 180)
-			angle+= 3;
-		else
-			flag = !flag;;
-	}else{
-		if(angle > 0)
-			angle-= 3;
-		else
-			flag = !flag;
-	}
-	
-    // 角度转脉冲：0°->500μs，180°->2500μs
-    uint16_t pulse = 500 + (angle * 2000 / 180);
+void servo_set_angle(void)
+{
+    static uint8_t flag = 1;
+
+    // 平滑角度变化
+    if(flag)
+    {
+        angle += 3;
+        if(angle >= 177)
+        {
+            angle = 180;
+            flag = 0;
+        }
+    }
+    else
+    {
+        angle -= 3;
+        if(angle <= 3)
+        {
+            angle = 0;
+            flag = 1;
+        }
+    }
+	printf("angle: %d\r\n",angle);
+    // 精确计算 PWM 脉宽 (0°→500us, 180°→2500us)
+    uint16_t pulse = 500 + (uint16_t)((float)angle * 2000.0f / 180.0f);
     TIM_SetCompare1(TIM1, pulse);
-	
-	
-	if(angle == 89)
-	{
-		engin_flag &= 0x00;
-		engin_flag |= ENGIN_IS;
-	}
-	if(angle == 0)
-	{
-		engin_flag &= 0x00;
-		engin_flag |= ENGIN_RI;
-	}
-	if(angle == 179)
-	{
-		engin_flag &= 0x00;
-		engin_flag |= ENGIN_LE;
-	}
+
+    // 状态标志更新
+    if(angle < 60)       engin_flag = ENGIN_RI;
+    else if(angle < 120) engin_flag = ENGIN_IS;
+    else                 engin_flag = ENGIN_LE;
 }

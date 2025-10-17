@@ -48,10 +48,10 @@ void printf_init(int baud)
 	USART_Init(USART2, &USART_InitStructure);
 	
 	
-	
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	
@@ -72,6 +72,7 @@ void send_data(char *str)
 
 void USART2_IRQHandler(void)
 {
+	
 	static int i = 0;
 	if(USART_GetITStatus(USART2, USART_IT_RXNE) == SET)
 	{
@@ -86,4 +87,5 @@ void USART2_IRQHandler(void)
 		
 		USART_ClearITPendingBit(USART2, USART_IT_RXNE);
 	}
+	
 }

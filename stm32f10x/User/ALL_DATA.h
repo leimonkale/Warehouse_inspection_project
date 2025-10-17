@@ -13,6 +13,10 @@ typedef unsigned short     int uint16_t;
 typedef unsigned           int uint32_t;
 typedef unsigned       long long uint64_t;
 
+///////////////////////////////////////////////////////////
+#define DWT                 ((DWT_Type *) DWT_BASE)
+#define DWT_BASE            (0xE0001000UL)
+#define DWT_CTRL_CYCCNTENA_Msk (1UL << 0)
 
 #define NULL 0
 extern volatile uint32_t SysTick_count;
@@ -32,6 +36,15 @@ typedef struct {
     uint32_t timeout_us;        // 超时时间(微秒)
     float distance;             // 当前距离(厘米)
 } HCSR04_HandleTypeDef;
+
+typedef enum {
+    HCSR04_IDLE = 0,      // 空闲
+    HCSR04_TRIGGERED,     // 已触发，等待上升沿
+    HCSR04_WAIT_ECHO,     // 等待下降沿
+    HCSR04_DONE,          // 测量完成
+    HCSR04_TIMEOUT        // 超时
+} HCSR04_State;
+
 extern HCSR04_HandleTypeDef hcsr04;   //超声波实例
 extern float hcsr04_distance;         //距离
 extern char hcsr04_flag;              //超声左前后标志
