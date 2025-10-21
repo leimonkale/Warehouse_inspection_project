@@ -16,7 +16,7 @@
 
 extern volatile uint32_t TIMIRQCNT;
 
-
+void delay_init(void);
 
 extern void cycleCounterInit(void);
 extern void delay_ms(uint16_t nms);

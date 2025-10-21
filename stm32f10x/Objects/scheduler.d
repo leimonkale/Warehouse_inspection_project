@@ -39,3 +39,8 @@
 .\objects\scheduler.o: .\HAL\control.h
 .\objects\scheduler.o: .\HARDWARE\hcsr04.h
 .\objects\scheduler.o: .\HARDWARE\engin.h
+.\objects\scheduler.o: .\HARDWARE\wifi.h
+.\objects\scheduler.o: .\CONFIG\usart2.h
+.\objects\scheduler.o: .\User\sys.h
+.\objects\scheduler.o: .\HARDWARE\DHT.h
+.\objects\scheduler.o: .\HARDWARE\adc.h

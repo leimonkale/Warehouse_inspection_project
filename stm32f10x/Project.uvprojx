@@ -747,6 +747,26 @@
               <FileType>5</FileType>
               <FilePath>.\CONFIG\uart1.h</FilePath>
             </File>
+            <File>
+              <FileName>usart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\CONFIG\usart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CONFIG\usart2.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\CONFIG\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CONFIG\usart.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -781,6 +801,46 @@
               <FileName>engin.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\HARDWARE\engin.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HARDWARE\motor.h</FilePath>
+            </File>
+            <File>
+              <FileName>wifi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\wifi.c</FilePath>
+            </File>
+            <File>
+              <FileName>wifi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HARDWARE\wifi.h</FilePath>
+            </File>
+            <File>
+              <FileName>DHT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\DHT.c</FilePath>
+            </File>
+            <File>
+              <FileName>DHT.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HARDWARE\DHT.h</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HARDWARE\adc.h</FilePath>
             </File>
           </Files>
         </Group>

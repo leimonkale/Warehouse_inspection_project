@@ -7,6 +7,11 @@
 #include "control.h"
 #include "hcsr04.h"
 #include "engin.h"
+#include "wifi.h"
+#include "usart2.h"
+//#include "usart.h"
+#include "DHT.h"
+#include "adc.h"
 
 loop_t loop = {0}; 
 
@@ -114,9 +119,11 @@ void Duty_6ms()
 void Duty_10ms()
 {
 	time[3] = GetSysTime_us();
+	printf("10ms\r\n");
 	
 	
 	time[3] = GetSysTime_us() - time[3];
+	
 }
 /////////////////////////////////////////////////////////
 void Duty_20ms()
@@ -126,7 +133,7 @@ void Duty_20ms()
 	motor_mod();					//电机模式控制
 	servo_set_angle();              //舵机角度控制
 	
-	
+	//printf("20ms\r\n");
 	time[4] = GetSysTime_us() - time[4];
 
 }
@@ -143,18 +150,23 @@ void Duty_50ms()
 /////////////////////////////////////////////////////////////
 void Duty_200ms()
 {
-	time[6] = GetSysTime_us();
-	HCSR04_Measure(&hcsr04);             //超声波测距,结果存在hcsr04_distance中
-	
-	time[6] = GetSysTime_us() - time[6];
+    time[6] = GetSysTime_us();
+
+    printf("HCSR04:%d\r\n",HCSR04_Measure(&hcsr04));
+	printf("hcsr04_distance = %.4f\r\n",hcsr04_distance);
+
+    time[6] = GetSysTime_us() - time[6];
 }
 
 //////////////////////////end///////////////////////////////////////////
 void Duty_1000ms()
 {
 	time[7] = GetSysTime_us();
-	
-	
+	//send_data_mqtt();
+	DHT_ReadValue();
+	Get_ADCValue();
+	printf("adc:%d\r\n",adc_num);
+	printf("humi:%d temp:%d\r\n",humi,temp);
 	time[7] = GetSysTime_us() - time[7];
 }
 

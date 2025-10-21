@@ -3,6 +3,7 @@
 #include "ALL_DEFINE.h"
 #include <string.h>
 
+
 // ======== 串口1 引脚定义 ========
 // PA9  -> USART1_TX  (复用推挽输出)
 // PA10 -> USART1_RX  (浮空输入)
@@ -73,6 +74,7 @@ void uart_send_str(const char *str)
 }
 */
 // ================== 中断接收 ==================
+
 void USART1_IRQHandler(void)
 {
     if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET)
@@ -104,7 +106,7 @@ void USART1_IRQHandler(void)
         case '2': wires |= SLIGHTLY_LEFT;  break;
         case '3': wires |= TURN_RIGHT;     break;
         case '4': wires |= TURN_LEFT;      break;
-        case '6': /* 停止或其他操作 */     break;
+        case '6':      break;
         default: break;
         }
 

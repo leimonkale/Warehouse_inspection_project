@@ -3,7 +3,8 @@
 
 #include "stm32f10x.h"
 
-
+extern uint32_t turn_l;
+extern uint32_t turn_r;
 
 typedef struct
 {

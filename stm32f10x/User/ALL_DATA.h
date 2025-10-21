@@ -19,6 +19,10 @@ typedef unsigned       long long uint64_t;
 #define DWT_CTRL_CYCCNTENA_Msk (1UL << 0)
 
 #define NULL 0
+
+extern uint32_t turn_l;
+extern uint32_t turn_r;
+
 extern volatile uint32_t SysTick_count;
 extern volatile uint8_t spl_flag;
 extern volatile uint32_t ST_CpuID;
@@ -52,5 +56,38 @@ extern char hcsr04_flag;              //超声左前后标志
 extern char engin_flag;               //舵机左前后标志
 extern uint16_t angle;                //舵机角度
 
+
+// 电机方向枚举
+typedef enum {
+    MOTOR_FORWARD = 0,  // 正转
+    MOTOR_BACKWARD      // 反转
+} Motor_DirectionTypeDef;
+// 电机结构体定义
+typedef struct {
+    TIM_TypeDef* TIMx;          // 定时器
+    uint16_t TIM_Channel;       // 定时器通道
+	GPIO_TypeDef* PWM_GPIOx;    // PWM引脚端口
+	uint16_t PWM_GPIO_Pin;      // PWM引脚
+    GPIO_TypeDef* IN1_GPIOx;    // IN1引脚端口
+    uint16_t IN1_GPIO_Pin;      // IN1引脚
+    GPIO_TypeDef* IN2_GPIOx;    // IN2引脚端口
+    uint16_t IN2_GPIO_Pin;      // IN2引脚
+    uint8_t speed;              // 当前速度(0-100)
+    Motor_DirectionTypeDef dir; // 当前方向
+} Motor_HandleTypeDef;
+extern Motor_HandleTypeDef motor_R, motor_L;   //两个电机实体
+
+
+typedef struct {
+    float Kp;
+    float Ki;
+    float Kd;
+    float integral;
+    float last_error;
+} PID_Controller;
+
+
+extern int humi,temp;    //温湿度
+extern int adc_num;
 #endif
 

@@ -43,14 +43,15 @@ void delay_ms(uint16_t nms)
 	SysTick_count22++;
 }
 
-void delay_us(unsigned int i)
- {  
-	char x=0;   
-    while( i--)
-    {	
-       for(x=1;x>0;x--);
+void delay_us(uint32_t us) {
+    uint32_t start = GetSysTime_us();
+    
+    // 处理可能的计数器溢出（每1ms会重置）
+    while ((GetSysTime_us() - start) < us) {
+        __NOP();  // 空操作避免编译器优化
     }
- }	
+}
+
 
 /**************************************************************
  *返回系统当前的运行时间  单位ms

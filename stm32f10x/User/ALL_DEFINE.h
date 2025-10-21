@@ -52,6 +52,16 @@
 
 /*********************************************/
 
+/***************电机转速 ******************/
+#undef  MOTOR_R
+#define MOTOR_R      50       
+
+#undef  MOTOR_L
+#define MOTOR_L      42 
+
+/*********************************************/
+
+
 /***************UART1 GPIO定义******************/ //视觉识别串口
 #define RCC_UART1		RCC_APB2Periph_GPIOA
 #define GPIO_UART1		GPIOA
