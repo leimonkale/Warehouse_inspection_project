@@ -1,6 +1,5 @@
 #include "server.h"
 
-// MQTT消息回调(收到消息后写入日志)
 void mqtt_message_callback(struct mosquitto *mosq, void *userdata, 
                           const struct mosquitto_message *msg) {
     if (msg->payloadlen == 0) return;
@@ -31,7 +30,6 @@ void *mqtt_thread(void *arg) {
     struct mosquitto *mosq = NULL;
     init_mqtt_client(&mosq);
 
-    // 连接MQTT broker
     if (mosquitto_connect(mosq, MQTT_BROKER, MQTT_PORT, 60) != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Failed to connect to MQTT broker\n");
         mosquitto_destroy(mosq);
@@ -39,7 +37,6 @@ void *mqtt_thread(void *arg) {
         return NULL;
     }
 
-    // 订阅话题
     if (mosquitto_subscribe(mosq, NULL, MQTT_TOPIC, 0) != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Failed to subscribe to topic\n");
         mosquitto_disconnect(mosq);
@@ -50,9 +47,7 @@ void *mqtt_thread(void *arg) {
 
     printf("MQTT client subscribed to %s\n", MQTT_TOPIC);
 
-    // 消息循环
     while (mosquitto_loop(mosq, -1, 1) == MOSQ_ERR_SUCCESS) {
-        // 循环处理消息
     }
 
     mosquitto_disconnect(mosq);
