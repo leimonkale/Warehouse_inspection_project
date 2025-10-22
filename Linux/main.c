@@ -1,5 +1,11 @@
 #include "server.h"
 #include <stdlib.h> 
+#include <signal.h>  
+
+void handle_exit(int sig) {
+    printf("\n收到退出信号，正在清理资源...\n");
+    exit(0);
+}
 
 void *record_thread(void *arg) {
     system("./record_mp4_loop.sh");
@@ -9,16 +15,18 @@ void *record_thread(void *arg) {
 int main() {
     pthread_t mqtt_tid; 
     pthread_t record_tid; 
+    pthread_t cloud_tid;  
     int epoll_fd, udp_fd;
 
-    // 初始化UDP服务器
+    signal(SIGINT, handle_exit);
+    mkdir(SAVE_DIR, 0755);
+
     udp_fd = init_udp_server();
     if (udp_fd < 0) {
         fprintf(stderr, "Failed to init UDP server\n");
         return -1;
     }
 
-    // 初始化epoll
     epoll_fd = epoll_create1(0);
     if (epoll_fd < 0) {
         perror("epoll_create1");
@@ -26,7 +34,6 @@ int main() {
         return -1;
     }
 
-    // 添加UDP套接字到epoll
     struct epoll_event ev;
     ev.events = EPOLLIN;
     ev.data.fd = udp_fd;
@@ -37,7 +44,6 @@ int main() {
         return -1;
     }
 
-    // 启动MQTT线程
     if (pthread_create(&mqtt_tid, NULL, mqtt_thread, NULL) != 0) {
         perror("pthread_create mqtt");
         return -1;
@@ -48,7 +54,11 @@ int main() {
         return -1;
     }
 
-    // epoll事件循环
+    if (pthread_create(&cloud_tid, NULL, cloud_thread, NULL) != 0) {
+        perror("pthread_create cloud");
+        return -1;
+    }
+
     struct epoll_event events[MAX_EVENTS];
     while (1) {
         int nfds = epoll_wait(epoll_fd, events, MAX_EVENTS, -1);
@@ -59,7 +69,6 @@ int main() {
 
         for (int i = 0; i < nfds; i++) {
             if (events[i].data.fd == udp_fd) {
-                // 处理UDP客户端消息
                 char buf[1024];
                 struct sockaddr_in client_addr;
                 socklen_t addr_len = sizeof(client_addr);
@@ -78,10 +87,10 @@ int main() {
         }
     }
 
-    // 清理资源
     close(epoll_fd);
     close(udp_fd);
     pthread_join(mqtt_tid, NULL);
     pthread_join(record_tid, NULL);
+    pthread_join(cloud_tid, NULL);  
     return 0;
 }
