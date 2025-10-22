@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="QPushButton" name="buttonPublish">
+   <property name="geometry">
+    <rect>
+     <x>204</x>
+     <y>140</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Publish</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditHost">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>35</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>broker.emqx.io</string>
+   </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonQuit">
+   <property name="geometry">
+    <rect>
+     <x>77</x>
+     <y>431</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>34</x>
+     <y>35</y>
+     <width>30</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Host:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonConnect">
+   <property name="geometry">
+    <rect>
+     <x>185</x>
+     <y>52</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditMessage">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>140</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>This is a test message</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>110</y>
+     <width>33</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Topic:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonSubscribe">
+   <property name="geometry">
+    <rect>
+     <x>204</x>
+     <y>110</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Subscribe</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>34</x>
+     <y>70</y>
+     <width>27</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Port:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>140</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Message:</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>190</y>
+     <width>280</width>
+     <height>234</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Log Messages</string>
+   </property>
+   <widget class="QPlainTextEdit" name="editLog">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>30</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="lineEditTopic">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>110</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>zeng kewu</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBoxPort">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>63</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>99999</number>
+   </property>
+   <property name="value">
+    <number>1883</number>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
