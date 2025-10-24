@@ -317,7 +317,10 @@ Makefile: ../../Warehouse_Smart_Car1.pro E:/tool/qt/Installation_address/6.9n/6.
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/mkspecs/features/yacc.prf \
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/mkspecs/features/lex.prf \
 		../../Warehouse_Smart_Car1.pro \
+		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Charts.prl \
+		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6OpenGLWidgets.prl \
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Widgets.prl \
+		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6OpenGL.prl \
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Gui.prl \
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Mqtt.prl \
 		E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Network.prl \
@@ -572,7 +575,10 @@ E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/mkspecs/features/exceptions.
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/mkspecs/features/yacc.prf:
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/mkspecs/features/lex.prf:
 ../../Warehouse_Smart_Car1.pro:
+E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Charts.prl:
+E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6OpenGLWidgets.prl:
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Widgets.prl:
+E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6OpenGL.prl:
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Gui.prl:
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Mqtt.prl:
 E:/tool/qt/Installation_address/6.9n/6.9.1/mingw_64/lib/Qt6Network.prl:

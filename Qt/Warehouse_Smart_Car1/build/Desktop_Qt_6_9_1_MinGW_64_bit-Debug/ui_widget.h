@@ -38,12 +38,15 @@ public:
     QPlainTextEdit *editLog;
     QLineEdit *lineEditTopic;
     QSpinBox *spinBoxPort;
+    QPushButton *rtspButton;
+    QLabel *env_lable;
+    QWidget *chartWidget;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName("Widget");
-        Widget->resize(800, 600);
+        Widget->resize(922, 517);
         buttonPublish = new QPushButton(Widget);
         buttonPublish->setObjectName("buttonPublish");
         buttonPublish->setGeometry(QRect(204, 140, 80, 24));
@@ -52,7 +55,7 @@ public:
         lineEditHost->setGeometry(QRect(70, 35, 108, 23));
         buttonQuit = new QPushButton(Widget);
         buttonQuit->setObjectName("buttonQuit");
-        buttonQuit->setGeometry(QRect(77, 431, 80, 24));
+        buttonQuit->setGeometry(QRect(40, 450, 80, 24));
         label = new QLabel(Widget);
         label->setObjectName("label");
         label->setGeometry(QRect(34, 35, 30, 16));
@@ -88,6 +91,16 @@ public:
         spinBoxPort->setGeometry(QRect(70, 70, 63, 24));
         spinBoxPort->setMaximum(99999);
         spinBoxPort->setValue(1883);
+        rtspButton = new QPushButton(Widget);
+        rtspButton->setObjectName("rtspButton");
+        rtspButton->setGeometry(QRect(170, 440, 111, 41));
+        env_lable = new QLabel(Widget);
+        env_lable->setObjectName("env_lable");
+        env_lable->setGeometry(QRect(430, 20, 221, 31));
+        chartWidget = new QWidget(Widget);
+        chartWidget->setObjectName("chartWidget");
+        chartWidget->setGeometry(QRect(340, 60, 571, 431));
+        chartWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         retranslateUi(Widget);
 
@@ -103,13 +116,15 @@ public:
         buttonQuit->setText(QCoreApplication::translate("Widget", "Quit", nullptr));
         label->setText(QCoreApplication::translate("Widget", "Host:", nullptr));
         buttonConnect->setText(QCoreApplication::translate("Widget", "Connect", nullptr));
-        lineEditMessage->setText(QCoreApplication::translate("Widget", "This is a test message", nullptr));
+        lineEditMessage->setText(QCoreApplication::translate("Widget", "{temp:23,humi:70,adc_num:247}", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "Topic:", nullptr));
         buttonSubscribe->setText(QCoreApplication::translate("Widget", "Subscribe", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "Port:", nullptr));
         label_4->setText(QCoreApplication::translate("Widget", "Message:", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Widget", "Log Messages", nullptr));
-        lineEditTopic->setText(QCoreApplication::translate("Widget", "zeng kewu", nullptr));
+        lineEditTopic->setText(QCoreApplication::translate("Widget", "mochen9227", nullptr));
+        rtspButton->setText(QCoreApplication::translate("Widget", "\347\233\221\346\216\247", nullptr));
+        env_lable->setText(QCoreApplication::translate("Widget", "\346\270\251\345\272\246\357\274\2320    \346\271\277\345\272\246\357\274\2320    \345\205\211\347\205\247\345\274\272\345\272\246\357\274\2320", nullptr));
     } // retranslateUi
 
 };

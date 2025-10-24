@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>922</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,8 +45,8 @@
   <widget class="QPushButton" name="buttonQuit">
    <property name="geometry">
     <rect>
-     <x>77</x>
-     <y>431</y>
+     <x>40</x>
+     <y>450</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -91,7 +91,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>This is a test message</string>
+    <string>{temp:23,humi:70,adc_num:247}</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -179,7 +179,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>zeng kewu</string>
+    <string>mochen9227</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBoxPort">
@@ -196,6 +196,45 @@
    </property>
    <property name="value">
     <number>1883</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="rtspButton">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>440</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>监控</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="env_lable">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>20</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>温度：0    湿度：0    光照强度：0</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="chartWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>60</y>
+     <width>571</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
  </widget>
