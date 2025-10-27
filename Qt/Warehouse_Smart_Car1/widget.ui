@@ -13,42 +13,13 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QPushButton" name="buttonPublish">
-   <property name="geometry">
-    <rect>
-     <x>204</x>
-     <y>140</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Publish</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditHost">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>35</y>
-     <width>108</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>broker.emqx.io</string>
-   </property>
-   <property name="placeholderText">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="buttonQuit">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>450</y>
-     <width>80</width>
-     <height>24</height>
+     <y>440</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -59,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>34</x>
-     <y>35</y>
+     <y>41</y>
      <width>30</width>
      <height>16</height>
     </rect>
@@ -71,8 +42,8 @@
   <widget class="QPushButton" name="buttonConnect">
    <property name="geometry">
     <rect>
-     <x>185</x>
-     <y>52</y>
+     <x>210</x>
+     <y>60</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -81,50 +52,11 @@
     <string>Connect</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditMessage">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>140</y>
-     <width>108</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>{temp:23,humi:70,adc_num:247}</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>110</y>
-     <width>33</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Topic:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonSubscribe">
-   <property name="geometry">
-    <rect>
-     <x>204</x>
-     <y>110</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Subscribe</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>34</x>
-     <y>70</y>
+     <y>72</y>
      <width>27</width>
      <height>16</height>
     </rect>
@@ -133,26 +65,13 @@
     <string>Port:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>140</y>
-     <width>54</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Message:</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>190</y>
-     <width>280</width>
-     <height>234</height>
+     <y>170</y>
+     <width>291</width>
+     <height>261</height>
     </rect>
    </property>
    <property name="title">
@@ -163,24 +82,11 @@
      <rect>
       <x>12</x>
       <y>30</y>
-      <width>256</width>
-      <height>192</height>
+      <width>271</width>
+      <height>221</height>
      </rect>
     </property>
    </widget>
-  </widget>
-  <widget class="QLineEdit" name="lineEditTopic">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>110</y>
-     <width>108</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>mochen9227</string>
-   </property>
   </widget>
   <widget class="QSpinBox" name="spinBoxPort">
    <property name="geometry">
@@ -214,11 +120,16 @@
   <widget class="QLabel" name="env_lable">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>470</x>
      <y>20</y>
-     <width>221</width>
+     <width>341</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>温度：0    湿度：0    光照强度：0</string>
@@ -236,6 +147,84 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditHost">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>41</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>broker.emqx.io</string>
+   </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>32</x>
+     <y>100</y>
+     <width>258</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Topic:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditTopic">
+        <property name="text">
+         <string>mochen9227</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonSubscribe">
+        <property name="text">
+         <string>Subscribe</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Message:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditMessage">
+        <property name="text">
+         <string>{temp:23,humi:70,adc_num:50}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonPublish">
+        <property name="text">
+         <string>Publish</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

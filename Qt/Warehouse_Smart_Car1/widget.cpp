@@ -129,7 +129,7 @@ void Widget::setupChart()
 
     // 创建光照强度Y轴
     m_axisYLight = new QValueAxis();
-    m_axisYLight->setRange(0, 1000);
+    m_axisYLight->setRange(0, 100);
     m_axisYLight->setLabelFormat("%d");
     m_axisYLight->setTitleText("光照强度");
     m_chart->addAxis(m_axisYLight, Qt::AlignRight);

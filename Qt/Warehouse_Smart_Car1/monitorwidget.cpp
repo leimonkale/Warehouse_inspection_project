@@ -33,7 +33,7 @@ void MonitorWidget::setupUI()
 
     // 设置测试URL
     QStringList testUrls = {
-        "rtsp://192.168.18.97:554/mjpeg/1"
+        "rtsp://192.168.180.231:554/mjpeg/1"
     };
     ui->urlEdit->setText(testUrls[0]);
 
