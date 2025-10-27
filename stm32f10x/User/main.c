@@ -5,6 +5,7 @@
 #include "INIT.h"
 #include "printf.h"
 
+
 void IWDG_Init(u8 prer,u16 rlr) 
 {	
  	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);  //使能对寄存器IWDG_PR和IWDG_RLR的写超作

@@ -33,3 +33,4 @@
 .\objects\uart1.o: E:\keil_5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\uart1.o: .\User\ALL_DEFINE.h
 .\objects\uart1.o: .\User\ALL_DATA.h
+.\objects\uart1.o: E:\keil_5\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -18,6 +18,9 @@
 #undef SLIGHTLY_RIGHT 
 #define SLIGHTLY_RIGHT (1<<4)        //右偏
 
+#undef SLIGHTLY_TT 
+#define SLIGHTLY_TT  (1<<3)        //左偏
+
 #undef TURN_LEFT 
 #define TURN_LEFT      (1<<2)        //左转
 #undef TURN_RIGHT 
@@ -71,9 +74,9 @@
 
 /***************UART2 GPIO定义******************/  //printf串口
 #define RCC_UART2		RCC_APB2Periph_GPIOA
-#define GPIO_UART2		GPIOA
-#define UART2_Pin_TX	GPIO_Pin_2
-#define UART2_Pin_RX	GPIO_Pin_3
+#define GPIO_UART2		GPIOB
+#define UART2_Pin_TX	GPIO_Pin_10
+#define UART2_Pin_RX	GPIO_Pin_11
 /*********************************************/
 
 /***************超声波 GPIO定义******************/ 

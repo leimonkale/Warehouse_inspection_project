@@ -36,3 +36,5 @@
 .\objects\control.o: .\HARDWARE\hcsr04.h
 .\objects\control.o: .\HARDWARE\engin.h
 .\objects\control.o: .\HARDWARE\motor.h
+.\objects\control.o: E:\keil_5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\control.o: E:\keil_5\ARM\ARMCC\Bin\..\include\string.h

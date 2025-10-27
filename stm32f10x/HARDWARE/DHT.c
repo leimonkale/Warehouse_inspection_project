@@ -101,8 +101,8 @@ int DHT_ReadValue()
 					return -2;
 			}
 		}
-		printf("Received: %02X %02X %02X %02X %02X\n", 
-          data[0], data[1], data[2], data[3], data[4]);
+		//printf("Received: %02X %02X %02X %02X %02X\n", 
+         // data[0], data[1], data[2], data[3], data[4]);
 		//ะฃั้
 		unsigned char check = data[0] + data[1] + data[2] + data[3];
 		if(check == data[4])

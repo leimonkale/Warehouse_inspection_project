@@ -87,10 +87,10 @@ void servo_set_angle(void)
             flag = 1;
         }
     }
-	printf("angle: %d\r\n",angle);
+	//printf("angle: %d\r\n",angle);
     // 精确计算 PWM 脉宽 (0°→500us, 180°→2500us)
-    uint16_t pulse = 500 + (uint16_t)((float)angle * 2000.0f / 180.0f);
-    TIM_SetCompare1(TIM1, pulse);
+    //uint16_t pulse = 500 + (uint16_t)((float)angle * 2000.0f / 180.0f);
+    //TIM_SetCompare1(TIM1, pulse);
 
     // 状态标志更新
     if(angle < 60)       engin_flag = ENGIN_RI;

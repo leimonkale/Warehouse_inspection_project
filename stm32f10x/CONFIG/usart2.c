@@ -21,7 +21,7 @@ u8 USART2_RX_BUF[USART2_MAX_RECV_LEN]; 				//½ÓÊÕ»º³å,×î´óUSART2_MAX_RECV_LEN¸ö×
 //[15]:0,Ã»ÓÐ½ÓÊÕµ½Êý¾Ý;1,½ÓÊÕµ½ÁËÒ»ÅúÊý¾Ý.
 //[14:0]:½ÓÊÕµ½µÄÊý¾Ý³¤¶È
 u16 USART2_RX_STA=0;   
-/*
+
 void USART2_IRQHandler(void)
 {
 	u8 res;	    
@@ -41,7 +41,7 @@ if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)//½ÓÊÕµ½Êý¾Ý
 		} 
 	}  											 
 }   
-*/
+
 //³õÊ¼»¯IO ´®¿Ú2
 //pclk1:PCLK1Ê±ÖÓÆµÂÊ(Mhz)
 //bound:²¨ÌØÂÊ	  

@@ -17,7 +17,7 @@ loop_t loop = {0};
 
 u32 time[10],time_sum;
  
-extern int16_t MpuOffset[7];
+extern int16_t MpuOffset[8];
 
 void Loop_check()
 {
@@ -29,7 +29,7 @@ void Loop_check()
 	loop.cnt_50ms++;
 	loop.cnt_200ms++;
 	loop.cnt_1000ms++;
-
+	loop.cnt_2000ms++;
 	if( loop.check_flag >= 1)
 	{
 		loop.err_flag ++;// 2ms 
@@ -86,6 +86,11 @@ void main_loop()
 			loop.cnt_1000ms = 0;
 			Duty_1000ms();				//周期1s的任务
 		}
+		if(loop.cnt_2000ms >= 1000)
+		{
+			loop.cnt_2000ms = 0;
+			Duty_2000ms();
+		}
 		loop.check_flag = 0;		//循环运行完毕标志
 	}
 }
@@ -119,7 +124,7 @@ void Duty_6ms()
 void Duty_10ms()
 {
 	time[3] = GetSysTime_us();
-	printf("10ms\r\n");
+	//printf("10ms\r\n");
 	
 	
 	time[3] = GetSysTime_us() - time[3];
@@ -131,30 +136,35 @@ void Duty_20ms()
 	time[4] = GetSysTime_us();
 	
 	motor_mod();					//电机模式控制
-	servo_set_angle();              //舵机角度控制
-	
-	//printf("20ms\r\n");
+	//servo_set_angle();              //舵机角度控制
 	time[4] = GetSysTime_us() - time[4];
+	//printf("time[20]:%d\r\n",time[4]);
 
 }
 //////////////////////////////////////////////////////////
 void Duty_50ms()
 {
 	time[5] = GetSysTime_us();
-	
+	process_uart_command();
 	HCSR04_GetFlag();                  //检测有无障碍
-	
+	if (wifi_receive_mqtt_msg(received_msg))
+    {
+            printf("处理消息: %s\r\n", received_msg);
+			Find_Line();
+     }
+	//printf("distance:%d\r\n",distance);
 	time[5] = GetSysTime_us() - time[5];
+	//printf("time[50]:%d\r\n",time[5]);
 }
 
 /////////////////////////////////////////////////////////////
 void Duty_200ms()
 {
     time[6] = GetSysTime_us();
-
-    printf("HCSR04:%d\r\n",HCSR04_Measure(&hcsr04));
-	printf("hcsr04_distance = %.4f\r\n",hcsr04_distance);
-
+	
+    //printf("HCSR04:%d\r\n",HCSR04_Measure(&hcsr04));
+	//printf("hcsr04_distance = %.4f\r\n",hcsr04_distance);
+	
     time[6] = GetSysTime_us() - time[6];
 }
 
@@ -162,12 +172,23 @@ void Duty_200ms()
 void Duty_1000ms()
 {
 	time[7] = GetSysTime_us();
-	//send_data_mqtt();
 	DHT_ReadValue();
 	Get_ADCValue();
-	printf("adc:%d\r\n",adc_num);
-	printf("humi:%d temp:%d\r\n",humi,temp);
+	//printf("adc:%d\r\n",adc_num);
+	//printf("humi:%d temp:%d\r\n",humi,temp);
+	
 	time[7] = GetSysTime_us() - time[7];
+	printf("time[1000]:%d\r\n",time[7]);
 }
-
+//////////////////////////end///////////////////////////////////////////
+void Duty_2000ms()
+{
+	time[8] = GetSysTime_us();
+	send_data_mqtt();
+	//printf("adc:%d\r\n",adc_num);
+	//printf("humi:%d temp:%d\r\n",humi,temp);
+	
+	time[8] = GetSysTime_us() - time[8];
+	printf("time[2000]:%d\r\n",time[8]);
+}
 //////////////////////////end///////////////////////////////////////////

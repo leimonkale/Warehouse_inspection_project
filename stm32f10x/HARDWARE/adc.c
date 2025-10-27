@@ -63,5 +63,7 @@ void Get_ADCValue(void)
 		ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
 	}
 	
-	adc_num = value;
+	//adc_num = value;
+	adc_num = -(int)(100 - (value / 400) * 100);
 }
+

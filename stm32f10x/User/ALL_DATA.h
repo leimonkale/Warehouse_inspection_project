@@ -27,6 +27,10 @@ extern volatile uint32_t SysTick_count;
 extern volatile uint8_t spl_flag;
 extern volatile uint32_t ST_CpuID;
 
+
+extern char cmd;    //巡线方向
+extern int distance;//偏移距离
+
 extern char wires;   //储存巡线结构数据
 extern char moter_com; //电机命令
 
@@ -84,10 +88,15 @@ typedef struct {
     float Kd;
     float integral;
     float last_error;
+	float prev_error;
 } PID_Controller;
 
 
 extern int humi,temp;    //温湿度
 extern int adc_num;
+extern char received_msg[100];
+extern char find_line[100];
+extern char cmd_line;
+
 #endif
 

@@ -6,6 +6,9 @@
 #include "ALL_DEFINE.h"
 #include "ALL_DATA.h"
 
+extern char cmd;
+extern int distance;
+
 extern char wires;   //储存巡线结构数据
 
 void uart_init(int BaudRate);
@@ -13,7 +16,9 @@ void uart_send_byte(char data);
 void uart_send_str(char *str);
 
 
-unsigned char uart_recv_byte(void);
-void uart_get_recvbuf(unsigned char *buf);
+//unsigned char uart_recv_byte(void);
+//void uart_get_recvbuf(unsigned char *buf);
+uint8_t uart1_parse_command(char *cmd_char, int *distance);
+void process_uart_command(void);
 
 #endif

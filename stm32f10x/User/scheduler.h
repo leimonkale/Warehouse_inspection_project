@@ -18,6 +18,7 @@ typedef struct
 	s16 cnt_50ms;
 	s16 cnt_200ms;
 	s16 cnt_1000ms;
+	s16 cnt_2000ms;
 }loop_t;
 
 void main_loop(void);
@@ -30,4 +31,5 @@ void Duty_20ms(void);
 void Duty_50ms(void);
 void Duty_200ms(void);
 void Duty_1000ms(void);
+void Duty_2000ms(void);
 #endif

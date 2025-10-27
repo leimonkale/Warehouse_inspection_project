@@ -30,10 +30,9 @@
 .\objects\wifi.o: .\Library\misc.h
 .\objects\wifi.o: HARDWARE\wifi.h
 .\objects\wifi.o: .\User\delay.h
-.\objects\wifi.o: .\CONFIG\usart.h
-.\objects\wifi.o: E:\keil_5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\wifi.o: .\CONFIG\usart2.h
 .\objects\wifi.o: .\User\sys.h
 .\objects\wifi.o: .\User\ALL_DATA.h
 .\objects\wifi.o: .\User\ALL_DEFINE.h
-.\objects\wifi.o: .\CONFIG\usart2.h
 .\objects\wifi.o: E:\keil_5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\wifi.o: E:\keil_5\ARM\ARMCC\Bin\..\include\stdio.h

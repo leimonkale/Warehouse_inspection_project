@@ -300,13 +300,13 @@ void Motor_ctr_RIGHT(void)            //电机右偏
 void Motor_ctr_TURNLEFT(void) {
     // 渐进式转向，保持一定速度差
     Motor_SetSpeedWithDirection(&motor_R, MOTOR_R);
-    Motor_SetSpeedWithDirection(&motor_L, MOTOR_L * 0.1); // 左轮减速到30%
+    Motor_SetSpeedWithDirection(&motor_L, MOTOR_L * 0.1); // 左轮减速到10%
     Motor_Start(&motor_R);
     Motor_Start(&motor_L);
 }
 
 void Motor_ctr_TURNRIGHT(void) {
-    Motor_SetSpeedWithDirection(&motor_R, MOTOR_R * 0.1); // 右轮减速到30%
+    Motor_SetSpeedWithDirection(&motor_R, MOTOR_R * 0.1); // 右轮减速到10%
     Motor_SetSpeedWithDirection(&motor_L, MOTOR_L);
     Motor_Start(&motor_R);
     Motor_Start(&motor_L);
